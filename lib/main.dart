@@ -38,7 +38,7 @@ class LigandHomePageState extends State<LigandHomePage> {
           ligands = data.split('\n');
         });
       } catch (e) {
-        print("Ошибка при чтении файла: $e");
+        debugPrint("Ошибка при чтении файла: $e");
       }
     }
   }
