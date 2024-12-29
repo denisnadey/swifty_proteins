@@ -21,6 +21,7 @@ dependencies:
     sdk: flutter
   freezed_annotation: ^2.4.4
   get_it: ^8.0.3
+  google_fonts: ^6.2.1
   injectable: ^2.5.0
   local_auth: ^2.3.0
   ngl_flutter:
@@ -32,6 +33,7 @@ dev_dependencies:
   auto_route_generator: ^9.0.0
   build_runner: ^2.4.14
   flutter_lints: ^5.0.0
+  flutter_native_splash: ^2.4.3
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
@@ -39,3 +41,13 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+flutter_native_splash:
+  color: "#89B0B2" # Цвет фона, если изображение не покроет экран полностью
+  image: assets/icon_app/Assets.xcassets/AppIcon.appiconset/1024.png # Самое большое изображение
+  android: true
+  ios: true
+  web: false
+  android_gravity: fill # Растянуть изображение на весь экран
+  ios_content_mode: scaleAspectFill # Растянуть изображение на весь экран
+  fullscreen: true
