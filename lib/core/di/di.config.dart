@@ -33,6 +33,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i203.BiometricAuth>(() => _i203.BiometricAuth());
     gh.factory<_i712.AuthCubit>(() => _i712.AuthCubit(
           gh<_i94.AuthService>(),
+          gh<_i203.BiometricAuth>(),
           appRouter: gh<_i775.AppRouter>(),
         ));
     return this;

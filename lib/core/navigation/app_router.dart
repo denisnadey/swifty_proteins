@@ -11,8 +11,12 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          path: '/register',
+          path: '/main_page',
           initial: true,
+          page: MainRoute.page,
+        ),
+        AutoRoute(
+          path: '/register',
           page: RegisterRoute.page,
         ),
         AutoRoute(

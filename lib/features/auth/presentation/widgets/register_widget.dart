@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swifty_proteins/features/auth/presentation/logic/auth/cubit/auth_cubit.dart';
 
-class RegisterWidget extends StatelessWidget {
+class RegisterWidget extends StatefulWidget {
+  RegisterWidget({super.key});
+
+  @override
+  State<RegisterWidget> createState() => _RegisterWidgetState();
+}
+
+class _RegisterWidgetState extends State<RegisterWidget> {
   final _usernameController = TextEditingController();
+
   final _passwordController = TextEditingController();
 
-  RegisterWidget({super.key});
+  bool isBiometricEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +34,20 @@ class RegisterWidget extends StatelessWidget {
               obscureText: true,
             ),
             const SizedBox(height: 20),
+            Row(
+              children: [
+                Switch(
+                    value: isBiometricEnabled,
+                    onChanged: (value) {
+                      setState(() {
+                        isBiometricEnabled = value;
+                      });
+                    }),
+                const SizedBox(width: 20),
+                const Text('Enable biometric'),
+              ],
+            ),
+            const SizedBox(height: 20),
             BlocBuilder<AuthCubit, AuthState>(
               builder: (context, state) {
                 return ElevatedButton(
@@ -34,6 +56,7 @@ class RegisterWidget extends StatelessWidget {
                       context.read<AuthCubit>().register(
                             _usernameController.text,
                             _passwordController.text,
+                            isBiometricEnabled,
                           );
                     },
                     loading: null,

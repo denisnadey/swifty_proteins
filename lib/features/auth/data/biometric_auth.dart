@@ -1,9 +1,32 @@
 import 'package:injectable/injectable.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @lazySingleton
 class BiometricAuth {
   final LocalAuthentication _auth = LocalAuthentication();
+
+  static const _biometricKey = 'biometric_enabled';
+
+  /// Сохраняет состояние активации биометрии
+  Future<void> saveBiometricPreference(bool isEnabled) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_biometricKey, isEnabled);
+  }
+
+  /// Проверяет, включена ли биометрия для входа
+  Future<bool> isBiometricEnabled() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_biometricKey) ?? false;
+  }
+
+  Future<void> activateBiometric() async {
+    await saveBiometricPreference(true);
+  }
+
+  Future<void> deactivate() async {
+    await saveBiometricPreference(false);
+  }
 
   Future<bool> authenticate() async {
     try {

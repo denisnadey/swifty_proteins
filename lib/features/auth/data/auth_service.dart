@@ -20,6 +20,13 @@ class AuthService {
     return username == storedUsername && password == storedPassword;
   }
 
+
+  Future<void> deleteUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_keyUsername);
+    await prefs.remove(_keyPassword);
+  }
+
   Future<bool> isUserRegistered() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.containsKey(_keyUsername) && prefs.containsKey(_keyPassword);

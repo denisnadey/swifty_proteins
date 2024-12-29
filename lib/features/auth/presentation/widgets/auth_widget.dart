@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:swifty_proteins/features/auth/presentation/logic/auth/cubit/auth_cubit.dart';
 
 class AuthWidget extends StatelessWidget {
@@ -41,6 +42,30 @@ class AuthWidget extends StatelessWidget {
                   ),
                 );
               },
+            ),
+            Gap(16),
+            Column(
+              children: [
+                Text(
+                  'Login by biometric:',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                  textAlign: TextAlign.start,
+                ),
+                Gap(8),
+                BlocBuilder<AuthCubit, AuthState>(
+                  builder: (context, state) {
+                    if (context.read<AuthCubit>().isBiometricEnabled) {
+                      return ElevatedButton(
+                        onPressed: () {
+                          context.read<AuthCubit>().authenticate();
+                        },
+                        child: const Text('Login by biometric'),
+                      );
+                    }
+                    return Text('Biometric is not activated or not available');
+                  },
+                ),
+              ],
             ),
           ],
         ),

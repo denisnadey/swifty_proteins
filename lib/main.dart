@@ -30,9 +30,10 @@ class LigandApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider<AuthCubit>(
+            lazy: false,
             create: (context) => locator<AuthCubit>(
               param1: _appRouter,
-            ),
+            )..init(),
           ),
           // Добавь другие кубиты или блоки, если потребуется
         ],
