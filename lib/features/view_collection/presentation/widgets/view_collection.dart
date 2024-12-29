@@ -19,12 +19,6 @@ class LigandHomePageState extends State<LigandHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Ligand Collection Viewer"),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.keyboard_backspace),
-            onPressed: () => context.router.maybePop(),
-          ),
-        ],
       ),
       body: ListView.builder(
         itemCount: widget.ligands.length,

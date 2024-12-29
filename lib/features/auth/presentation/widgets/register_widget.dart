@@ -12,56 +12,40 @@ class RegisterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Register')),
-      body: BlocListener<AuthCubit, AuthState>(
-        listener: (context, state) {
-          state.maybeWhen(
-            registered: () => Navigator.pushReplacementNamed(context, '/auth'),
-            error: (message) => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(message)),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _usernameController,
+              decoration: const InputDecoration(labelText: 'Username'),
             ),
-            orElse: () {},
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              TextField(
-                controller: _usernameController,
-                decoration: const InputDecoration(labelText: 'Username'),
-              ),
-              TextField(
-                controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Password'),
-                obscureText: true,
-              ),
-              const SizedBox(height: 20),
-              BlocBuilder<AuthCubit, AuthState>(
-                builder: (context, state) {
-                  return ElevatedButton(
-                    onPressed: state.maybeMap(
-                        orElse: () {
-                          return null;
-                        },
-                        loading: (_) => () {
-                              context.read<AuthCubit>().register(
-                                    _usernameController.text,
-                                    _passwordController.text,
-                                  );
-                            }),
-                    child: state.maybeMap(
-                      loading: (_) {
-                        return const CircularProgressIndicator();
-                      },
-                      orElse: () {
-                        return const Text('Register');
-                      },
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+            TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            const SizedBox(height: 20),
+            BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, state) {
+                return ElevatedButton(
+                  onPressed: state.maybeMap(
+                    orElse: () => () {
+                      context.read<AuthCubit>().register(
+                            _usernameController.text,
+                            _passwordController.text,
+                          );
+                    },
+                    loading: null,
+                  ),
+                  child: state.maybeMap(
+                    loading: (_) => const CircularProgressIndicator(),
+                    orElse: () => const Text('Register'),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
