@@ -54,7 +54,7 @@ class AuthWidget extends StatelessWidget {
                 Gap(8),
                 BlocBuilder<AuthCubit, AuthState>(
                   builder: (context, state) {
-                    if (context.read<AuthCubit>().isBiometricEnabled) {
+                    if (state.isBiometricEnabled) {
                       return ElevatedButton(
                         onPressed: () {
                           context.read<AuthCubit>().authenticate();

@@ -23,27 +23,30 @@ class AuthCubit extends Cubit<AuthState> {
     this.authService,
     this.biometricAuth, {
     @pathParam required this.appRouter,
-  }) : super(const AuthState.initial());
-
-  bool isBiometricEnabled = false;
+  }) : super(const AuthState.initial(
+          isBiometricEnabled: false,
+        ));
 
   Future<void> init() async {
     if (kDebugMode) {
       appRouter.push(const HomeRoute());
     }
 
-    isBiometricEnabled = await biometricAuth.isBiometricEnabled();
+    final isBiometricEnabled = await biometricAuth.isBiometricEnabled();
+    emit(state.copyWith(isBiometricEnabled: isBiometricEnabled));
   }
 
   Future<void> activateBiometric() async {
     await biometricAuth.activateBiometric();
-    isBiometricEnabled = true;
+
+    emit(state.copyWith(isBiometricEnabled: true));
   }
 
   Future<void> deleteUserData() async {
     await authService.deleteUser();
     await biometricAuth.deactivate();
-    isBiometricEnabled = false;
+
+    emit(state.copyWith(isBiometricEnabled: false));
     appRouter.push(const MainRoute());
 
     showSimpleNotification(
@@ -68,11 +71,12 @@ class AuthCubit extends Cubit<AuthState> {
         background: Colors.red, // Фон зеленый
       );
 
-      emit(const AuthState.error('Biometrics are not available'));
+      emit(AuthState.error('Biometrics are not available',
+          isBiometricEnabled: state.isBiometricEnabled));
       return;
     }
 
-    emit(const AuthState.loading());
+    emit(AuthState.loading(isBiometricEnabled: state.isBiometricEnabled));
     try {
       final success = await biometricAuth.authenticate();
       if (success) {
@@ -84,18 +88,19 @@ class AuthCubit extends Cubit<AuthState> {
           background: Colors.green, // Фон зеленый
         );
         appRouter.push(const HomeRoute());
-        emit(const AuthState.loggedIn());
+        emit(AuthState.loggedIn(isBiometricEnabled: state.isBiometricEnabled));
       } else {
-        emit(const AuthState.initial());
+        emit(AuthState.initial(isBiometricEnabled: state.isBiometricEnabled));
       }
     } catch (e) {
-      emit(AuthState.error(e.toString()));
+      emit(AuthState.error(e.toString(),
+          isBiometricEnabled: state.isBiometricEnabled));
     }
   }
 
   Future<void> register(
       String username, String password, bool loginByBiometric) async {
-    emit(const AuthState.loading());
+    emit(AuthState.loading(isBiometricEnabled: state.isBiometricEnabled));
     try {
       await authService.saveUser(username, password);
 
@@ -109,18 +114,19 @@ class AuthCubit extends Cubit<AuthState> {
 
       if (loginByBiometric) {
         await biometricAuth.activateBiometric();
-        isBiometricEnabled = true;
+        emit(state.copyWith(isBiometricEnabled: true));
       }
 
       appRouter.push(const AuthRoute());
-      emit(const AuthState.registered());
+      emit(AuthState.registered(isBiometricEnabled: state.isBiometricEnabled));
     } catch (e) {
-      emit(AuthState.error(e.toString()));
+      emit(AuthState.error(e.toString(),
+          isBiometricEnabled: state.isBiometricEnabled));
     }
   }
 
   Future<void> login(String username, String password) async {
-    emit(const AuthState.loading());
+    emit(AuthState.loading(isBiometricEnabled: state.isBiometricEnabled));
     try {
       final success = await authService.login(username, password);
       if (success) {
@@ -133,7 +139,7 @@ class AuthCubit extends Cubit<AuthState> {
         );
         appRouter.push(const HomeRoute());
 
-        emit(const AuthState.loggedIn());
+        emit(AuthState.loggedIn(isBiometricEnabled: state.isBiometricEnabled));
       } else {
         showSimpleNotification(
           Text(
@@ -142,7 +148,8 @@ class AuthCubit extends Cubit<AuthState> {
           ),
           background: Colors.red, // Фон красный
         );
-        emit(const AuthState.error('Invalid credentials'));
+        emit(AuthState.error('Invalid credentials',
+            isBiometricEnabled: state.isBiometricEnabled));
       }
     } catch (e) {
       showSimpleNotification(
@@ -152,7 +159,8 @@ class AuthCubit extends Cubit<AuthState> {
         ),
         background: Colors.red, // Фон красный
       );
-      emit(AuthState.error(e.toString()));
+      emit(AuthState.error(e.toString(),
+          isBiometricEnabled: state.isBiometricEnabled));
     }
   }
 }

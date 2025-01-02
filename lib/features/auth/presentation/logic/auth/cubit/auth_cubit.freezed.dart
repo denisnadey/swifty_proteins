@@ -16,31 +16,32 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthState {
+  bool get isBiometricEnabled => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() registered,
-    required TResult Function() loggedIn,
-    required TResult Function(String message) error,
+    required TResult Function(bool isBiometricEnabled) initial,
+    required TResult Function(bool isBiometricEnabled) loading,
+    required TResult Function(bool isBiometricEnabled) registered,
+    required TResult Function(bool isBiometricEnabled) loggedIn,
+    required TResult Function(String message, bool isBiometricEnabled) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? registered,
-    TResult? Function()? loggedIn,
-    TResult? Function(String message)? error,
+    TResult? Function(bool isBiometricEnabled)? initial,
+    TResult? Function(bool isBiometricEnabled)? loading,
+    TResult? Function(bool isBiometricEnabled)? registered,
+    TResult? Function(bool isBiometricEnabled)? loggedIn,
+    TResult? Function(String message, bool isBiometricEnabled)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? registered,
-    TResult Function()? loggedIn,
-    TResult Function(String message)? error,
+    TResult Function(bool isBiometricEnabled)? initial,
+    TResult Function(bool isBiometricEnabled)? loading,
+    TResult Function(bool isBiometricEnabled)? registered,
+    TResult Function(bool isBiometricEnabled)? loggedIn,
+    TResult Function(String message, bool isBiometricEnabled)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,12 +73,20 @@ mixin _$AuthState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AuthStateCopyWith<AuthState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
+  @useResult
+  $Res call({bool isBiometricEnabled});
 }
 
 /// @nodoc
@@ -92,13 +101,29 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isBiometricEnabled = null,
+  }) {
+    return _then(_value.copyWith(
+      isBiometricEnabled: null == isBiometricEnabled
+          ? _value.isBiometricEnabled
+          : isBiometricEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isBiometricEnabled});
 }
 
 /// @nodoc
@@ -111,63 +136,98 @@ class __$$InitialImplCopyWithImpl<$Res>
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isBiometricEnabled = null,
+  }) {
+    return _then(_$InitialImpl(
+      isBiometricEnabled: null == isBiometricEnabled
+          ? _value.isBiometricEnabled
+          : isBiometricEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+  const _$InitialImpl({this.isBiometricEnabled = false});
 
   @override
-  String toString() {
-    return 'AuthState.initial()';
+  @JsonKey()
+  final bool isBiometricEnabled;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.initial(isBiometricEnabled: $isBiometricEnabled)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.initial'))
+      ..add(DiagnosticsProperty('isBiometricEnabled', isBiometricEnabled));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            (identical(other.isBiometricEnabled, isBiometricEnabled) ||
+                other.isBiometricEnabled == isBiometricEnabled));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isBiometricEnabled);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() registered,
-    required TResult Function() loggedIn,
-    required TResult Function(String message) error,
+    required TResult Function(bool isBiometricEnabled) initial,
+    required TResult Function(bool isBiometricEnabled) loading,
+    required TResult Function(bool isBiometricEnabled) registered,
+    required TResult Function(bool isBiometricEnabled) loggedIn,
+    required TResult Function(String message, bool isBiometricEnabled) error,
   }) {
-    return initial();
+    return initial(isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? registered,
-    TResult? Function()? loggedIn,
-    TResult? Function(String message)? error,
+    TResult? Function(bool isBiometricEnabled)? initial,
+    TResult? Function(bool isBiometricEnabled)? loading,
+    TResult? Function(bool isBiometricEnabled)? registered,
+    TResult? Function(bool isBiometricEnabled)? loggedIn,
+    TResult? Function(String message, bool isBiometricEnabled)? error,
   }) {
-    return initial?.call();
+    return initial?.call(isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? registered,
-    TResult Function()? loggedIn,
-    TResult Function(String message)? error,
+    TResult Function(bool isBiometricEnabled)? initial,
+    TResult Function(bool isBiometricEnabled)? loading,
+    TResult Function(bool isBiometricEnabled)? registered,
+    TResult Function(bool isBiometricEnabled)? loggedIn,
+    TResult Function(String message, bool isBiometricEnabled)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(isBiometricEnabled);
     }
     return orElse();
   }
@@ -214,14 +274,28 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements AuthState {
-  const factory _Initial() = _$InitialImpl;
+  const factory _Initial({final bool isBiometricEnabled}) = _$InitialImpl;
+
+  @override
+  bool get isBiometricEnabled;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
+abstract class _$$LoadingImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
       __$$LoadingImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isBiometricEnabled});
 }
 
 /// @nodoc
@@ -234,63 +308,98 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isBiometricEnabled = null,
+  }) {
+    return _then(_$LoadingImpl(
+      isBiometricEnabled: null == isBiometricEnabled
+          ? _value.isBiometricEnabled
+          : isBiometricEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
+  const _$LoadingImpl({this.isBiometricEnabled = false});
 
   @override
-  String toString() {
-    return 'AuthState.loading()';
+  @JsonKey()
+  final bool isBiometricEnabled;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.loading(isBiometricEnabled: $isBiometricEnabled)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.loading'))
+      ..add(DiagnosticsProperty('isBiometricEnabled', isBiometricEnabled));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingImpl &&
+            (identical(other.isBiometricEnabled, isBiometricEnabled) ||
+                other.isBiometricEnabled == isBiometricEnabled));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isBiometricEnabled);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() registered,
-    required TResult Function() loggedIn,
-    required TResult Function(String message) error,
+    required TResult Function(bool isBiometricEnabled) initial,
+    required TResult Function(bool isBiometricEnabled) loading,
+    required TResult Function(bool isBiometricEnabled) registered,
+    required TResult Function(bool isBiometricEnabled) loggedIn,
+    required TResult Function(String message, bool isBiometricEnabled) error,
   }) {
-    return loading();
+    return loading(isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? registered,
-    TResult? Function()? loggedIn,
-    TResult? Function(String message)? error,
+    TResult? Function(bool isBiometricEnabled)? initial,
+    TResult? Function(bool isBiometricEnabled)? loading,
+    TResult? Function(bool isBiometricEnabled)? registered,
+    TResult? Function(bool isBiometricEnabled)? loggedIn,
+    TResult? Function(String message, bool isBiometricEnabled)? error,
   }) {
-    return loading?.call();
+    return loading?.call(isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? registered,
-    TResult Function()? loggedIn,
-    TResult Function(String message)? error,
+    TResult Function(bool isBiometricEnabled)? initial,
+    TResult Function(bool isBiometricEnabled)? loading,
+    TResult Function(bool isBiometricEnabled)? registered,
+    TResult Function(bool isBiometricEnabled)? loggedIn,
+    TResult Function(String message, bool isBiometricEnabled)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(isBiometricEnabled);
     }
     return orElse();
   }
@@ -337,14 +446,28 @@ class _$LoadingImpl implements _Loading {
 }
 
 abstract class _Loading implements AuthState {
-  const factory _Loading() = _$LoadingImpl;
+  const factory _Loading({final bool isBiometricEnabled}) = _$LoadingImpl;
+
+  @override
+  bool get isBiometricEnabled;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RegisteredImplCopyWith<$Res> {
+abstract class _$$RegisteredImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
   factory _$$RegisteredImplCopyWith(
           _$RegisteredImpl value, $Res Function(_$RegisteredImpl) then) =
       __$$RegisteredImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isBiometricEnabled});
 }
 
 /// @nodoc
@@ -357,63 +480,98 @@ class __$$RegisteredImplCopyWithImpl<$Res>
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isBiometricEnabled = null,
+  }) {
+    return _then(_$RegisteredImpl(
+      isBiometricEnabled: null == isBiometricEnabled
+          ? _value.isBiometricEnabled
+          : isBiometricEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$RegisteredImpl implements _Registered {
-  const _$RegisteredImpl();
+class _$RegisteredImpl with DiagnosticableTreeMixin implements _Registered {
+  const _$RegisteredImpl({this.isBiometricEnabled = false});
 
   @override
-  String toString() {
-    return 'AuthState.registered()';
+  @JsonKey()
+  final bool isBiometricEnabled;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.registered(isBiometricEnabled: $isBiometricEnabled)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.registered'))
+      ..add(DiagnosticsProperty('isBiometricEnabled', isBiometricEnabled));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RegisteredImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$RegisteredImpl &&
+            (identical(other.isBiometricEnabled, isBiometricEnabled) ||
+                other.isBiometricEnabled == isBiometricEnabled));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isBiometricEnabled);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisteredImplCopyWith<_$RegisteredImpl> get copyWith =>
+      __$$RegisteredImplCopyWithImpl<_$RegisteredImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() registered,
-    required TResult Function() loggedIn,
-    required TResult Function(String message) error,
+    required TResult Function(bool isBiometricEnabled) initial,
+    required TResult Function(bool isBiometricEnabled) loading,
+    required TResult Function(bool isBiometricEnabled) registered,
+    required TResult Function(bool isBiometricEnabled) loggedIn,
+    required TResult Function(String message, bool isBiometricEnabled) error,
   }) {
-    return registered();
+    return registered(isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? registered,
-    TResult? Function()? loggedIn,
-    TResult? Function(String message)? error,
+    TResult? Function(bool isBiometricEnabled)? initial,
+    TResult? Function(bool isBiometricEnabled)? loading,
+    TResult? Function(bool isBiometricEnabled)? registered,
+    TResult? Function(bool isBiometricEnabled)? loggedIn,
+    TResult? Function(String message, bool isBiometricEnabled)? error,
   }) {
-    return registered?.call();
+    return registered?.call(isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? registered,
-    TResult Function()? loggedIn,
-    TResult Function(String message)? error,
+    TResult Function(bool isBiometricEnabled)? initial,
+    TResult Function(bool isBiometricEnabled)? loading,
+    TResult Function(bool isBiometricEnabled)? registered,
+    TResult Function(bool isBiometricEnabled)? loggedIn,
+    TResult Function(String message, bool isBiometricEnabled)? error,
     required TResult orElse(),
   }) {
     if (registered != null) {
-      return registered();
+      return registered(isBiometricEnabled);
     }
     return orElse();
   }
@@ -460,14 +618,28 @@ class _$RegisteredImpl implements _Registered {
 }
 
 abstract class _Registered implements AuthState {
-  const factory _Registered() = _$RegisteredImpl;
+  const factory _Registered({final bool isBiometricEnabled}) = _$RegisteredImpl;
+
+  @override
+  bool get isBiometricEnabled;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RegisteredImplCopyWith<_$RegisteredImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoggedInImplCopyWith<$Res> {
+abstract class _$$LoggedInImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
   factory _$$LoggedInImplCopyWith(
           _$LoggedInImpl value, $Res Function(_$LoggedInImpl) then) =
       __$$LoggedInImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isBiometricEnabled});
 }
 
 /// @nodoc
@@ -480,63 +652,98 @@ class __$$LoggedInImplCopyWithImpl<$Res>
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isBiometricEnabled = null,
+  }) {
+    return _then(_$LoggedInImpl(
+      isBiometricEnabled: null == isBiometricEnabled
+          ? _value.isBiometricEnabled
+          : isBiometricEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$LoggedInImpl implements _LoggedIn {
-  const _$LoggedInImpl();
+class _$LoggedInImpl with DiagnosticableTreeMixin implements _LoggedIn {
+  const _$LoggedInImpl({this.isBiometricEnabled = false});
 
   @override
-  String toString() {
-    return 'AuthState.loggedIn()';
+  @JsonKey()
+  final bool isBiometricEnabled;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.loggedIn(isBiometricEnabled: $isBiometricEnabled)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.loggedIn'))
+      ..add(DiagnosticsProperty('isBiometricEnabled', isBiometricEnabled));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoggedInImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoggedInImpl &&
+            (identical(other.isBiometricEnabled, isBiometricEnabled) ||
+                other.isBiometricEnabled == isBiometricEnabled));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isBiometricEnabled);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoggedInImplCopyWith<_$LoggedInImpl> get copyWith =>
+      __$$LoggedInImplCopyWithImpl<_$LoggedInImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() registered,
-    required TResult Function() loggedIn,
-    required TResult Function(String message) error,
+    required TResult Function(bool isBiometricEnabled) initial,
+    required TResult Function(bool isBiometricEnabled) loading,
+    required TResult Function(bool isBiometricEnabled) registered,
+    required TResult Function(bool isBiometricEnabled) loggedIn,
+    required TResult Function(String message, bool isBiometricEnabled) error,
   }) {
-    return loggedIn();
+    return loggedIn(isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? registered,
-    TResult? Function()? loggedIn,
-    TResult? Function(String message)? error,
+    TResult? Function(bool isBiometricEnabled)? initial,
+    TResult? Function(bool isBiometricEnabled)? loading,
+    TResult? Function(bool isBiometricEnabled)? registered,
+    TResult? Function(bool isBiometricEnabled)? loggedIn,
+    TResult? Function(String message, bool isBiometricEnabled)? error,
   }) {
-    return loggedIn?.call();
+    return loggedIn?.call(isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? registered,
-    TResult Function()? loggedIn,
-    TResult Function(String message)? error,
+    TResult Function(bool isBiometricEnabled)? initial,
+    TResult Function(bool isBiometricEnabled)? loading,
+    TResult Function(bool isBiometricEnabled)? registered,
+    TResult Function(bool isBiometricEnabled)? loggedIn,
+    TResult Function(String message, bool isBiometricEnabled)? error,
     required TResult orElse(),
   }) {
     if (loggedIn != null) {
-      return loggedIn();
+      return loggedIn(isBiometricEnabled);
     }
     return orElse();
   }
@@ -583,16 +790,27 @@ class _$LoggedInImpl implements _LoggedIn {
 }
 
 abstract class _LoggedIn implements AuthState {
-  const factory _LoggedIn() = _$LoggedInImpl;
+  const factory _LoggedIn({final bool isBiometricEnabled}) = _$LoggedInImpl;
+
+  @override
+  bool get isBiometricEnabled;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoggedInImplCopyWith<_$LoggedInImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
+abstract class _$$ErrorImplCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String message});
+  $Res call({String message, bool isBiometricEnabled});
 }
 
 /// @nodoc
@@ -609,27 +827,44 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? isBiometricEnabled = null,
   }) {
     return _then(_$ErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      isBiometricEnabled: null == isBiometricEnabled
+          ? _value.isBiometricEnabled
+          : isBiometricEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.message);
+class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
+  const _$ErrorImpl(this.message, {this.isBiometricEnabled = false});
 
   @override
   final String message;
+  @override
+  @JsonKey()
+  final bool isBiometricEnabled;
 
   @override
-  String toString() {
-    return 'AuthState.error(message: $message)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.error(message: $message, isBiometricEnabled: $isBiometricEnabled)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.error'))
+      ..add(DiagnosticsProperty('message', message))
+      ..add(DiagnosticsProperty('isBiometricEnabled', isBiometricEnabled));
   }
 
   @override
@@ -637,11 +872,13 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.isBiometricEnabled, isBiometricEnabled) ||
+                other.isBiometricEnabled == isBiometricEnabled));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, isBiometricEnabled);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -654,39 +891,39 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() registered,
-    required TResult Function() loggedIn,
-    required TResult Function(String message) error,
+    required TResult Function(bool isBiometricEnabled) initial,
+    required TResult Function(bool isBiometricEnabled) loading,
+    required TResult Function(bool isBiometricEnabled) registered,
+    required TResult Function(bool isBiometricEnabled) loggedIn,
+    required TResult Function(String message, bool isBiometricEnabled) error,
   }) {
-    return error(message);
+    return error(message, isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? registered,
-    TResult? Function()? loggedIn,
-    TResult? Function(String message)? error,
+    TResult? Function(bool isBiometricEnabled)? initial,
+    TResult? Function(bool isBiometricEnabled)? loading,
+    TResult? Function(bool isBiometricEnabled)? registered,
+    TResult? Function(bool isBiometricEnabled)? loggedIn,
+    TResult? Function(String message, bool isBiometricEnabled)? error,
   }) {
-    return error?.call(message);
+    return error?.call(message, isBiometricEnabled);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? registered,
-    TResult Function()? loggedIn,
-    TResult Function(String message)? error,
+    TResult Function(bool isBiometricEnabled)? initial,
+    TResult Function(bool isBiometricEnabled)? loading,
+    TResult Function(bool isBiometricEnabled)? registered,
+    TResult Function(bool isBiometricEnabled)? loggedIn,
+    TResult Function(String message, bool isBiometricEnabled)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(message, isBiometricEnabled);
     }
     return orElse();
   }
@@ -733,12 +970,16 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements AuthState {
-  const factory _Error(final String message) = _$ErrorImpl;
+  const factory _Error(final String message, {final bool isBiometricEnabled}) =
+      _$ErrorImpl;
 
   String get message;
+  @override
+  bool get isBiometricEnabled;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
