@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swifty_proteins/features/auth/presentation/logic/auth/cubit/auth_cubit.dart';
 
 class RegisterWidget extends StatefulWidget {
-  RegisterWidget({super.key});
+  const RegisterWidget({super.key});
 
   @override
   State<RegisterWidget> createState() => _RegisterWidgetState();

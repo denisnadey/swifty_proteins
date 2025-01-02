@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:swifty_proteins/core/navigation/app_router.gr.dart';
 import 'package:swifty_proteins/features/auth/presentation/logic/auth/cubit/auth_cubit.dart';
-import 'package:swifty_proteins/features/auth/presentation/widgets/auth_widget.dart';
 
 @RoutePage()
 class MainPage extends StatelessWidget {

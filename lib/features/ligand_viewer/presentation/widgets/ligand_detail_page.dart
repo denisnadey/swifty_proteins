@@ -26,7 +26,7 @@ class _LigandDetailPageState extends State<LigandDetailPage> {
     Uint8List? image;
 
     await controller.captureImage((base64Image) {
-      print('Image captured with length: ${base64Image}');
+      print('Image captured with length: $base64Image');
       image = base64.decode(base64Image);
     });
 
@@ -48,13 +48,13 @@ class _LigandDetailPageState extends State<LigandDetailPage> {
           );
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Изображение успешно создано')),
+              SnackBar(content: Text('Image successfully created')),
             );
           }
         } else {
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Ошибка: не удалось создать изображение')),
+              SnackBar(content: Text('Error creating image')),
             );
           }
         }
@@ -62,7 +62,7 @@ class _LigandDetailPageState extends State<LigandDetailPage> {
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Ошибка: $e')),
+          SnackBar(content: Text('Error: $e')),
         );
       }
     }

@@ -20,7 +20,6 @@ class AuthService {
     return username == storedUsername && password == storedPassword;
   }
 
-
   Future<void> deleteUser() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_keyUsername);
