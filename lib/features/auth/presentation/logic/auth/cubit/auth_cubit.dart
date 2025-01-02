@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -27,6 +28,10 @@ class AuthCubit extends Cubit<AuthState> {
   bool isBiometricEnabled = false;
 
   Future<void> init() async {
+    if (kDebugMode) {
+      appRouter.push(const HomeRoute());
+    }
+
     isBiometricEnabled = await biometricAuth.isBiometricEnabled();
   }
 

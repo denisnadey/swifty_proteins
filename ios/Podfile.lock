@@ -100,7 +100,7 @@ SPEC CHECKSUMS:
   DKPhotoGallery: b3834fecb755ee09a593d7c9e389d8b5d6deed60
   file_picker: 09aa5ec1ab24135ccd7a1621c46c84134bfd6655
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_native_splash: e8a1e01082d97a8099d973f919f57904c925008a
+  flutter_native_splash: f71420956eb811e6d310720fee915f1d42852e7a
   local_auth_darwin: 66e40372f1c29f383a314c738c7446e2f7fdadc3
   native_screenshot_widget: fd4ad1042bf61cf445a79803800ba4eca26483f5
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
