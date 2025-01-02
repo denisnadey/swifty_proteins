@@ -27,7 +27,8 @@ dependencies:
   local_auth: ^2.3.0
   native_screenshot_widget: ^0.0.8
   ngl_flutter:
-    path: ../ngl_flutter
+    git:
+      url: https://github.com/denisnadey/ngl_flutter
   overlay_support: ^2.1.0
   path_provider: ^2.1.5
   share_plus: ^10.1.3

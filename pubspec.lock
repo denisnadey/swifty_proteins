@@ -621,9 +621,11 @@ packages:
   ngl_flutter:
     dependency: "direct main"
     description:
-      path: "../ngl_flutter"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "5a4629bfd4a94b6c57c22172edbd4569aefbc006"
+      url: "https://github.com/denisnadey/ngl_flutter"
+    source: git
     version: "0.0.1"
   overlay_support:
     dependency: "direct main"
