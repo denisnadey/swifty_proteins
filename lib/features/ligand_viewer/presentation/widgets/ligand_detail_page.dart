@@ -20,8 +20,6 @@ class LigandDetailPage extends StatefulWidget {
 }
 
 class _LigandDetailPageState extends State<LigandDetailPage> {
-  String atomInfo = '';
-
   late NGLViewerController controller;
 
   Future<Uint8List?> takeScreenshot() async {
@@ -80,9 +78,6 @@ class _LigandDetailPageState extends State<LigandDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Selected ligand: ${widget.ligand}\n selectedAtom: $atomInfo",
-        ),
         actions: [
           IconButton(
             icon: Icon(Icons.refresh),
