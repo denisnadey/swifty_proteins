@@ -32,10 +32,6 @@ class BiometricAuth {
     try {
       return await _auth.authenticate(
         localizedReason: 'Please authenticate to access the app',
-        options: const AuthenticationOptions(
-          biometricOnly: true,
-          stickyAuth: true,
-        ),
       );
     } catch (e) {
       return false;
@@ -43,6 +39,9 @@ class BiometricAuth {
   }
 
   Future<bool> canCheckBiometrics() async {
-    return await _auth.canCheckBiometrics;
+    bool canCheck = await _auth.canCheckBiometrics;
+    bool isSupported = await _auth.isDeviceSupported();
+
+    return canCheck && isSupported;
   }
 }

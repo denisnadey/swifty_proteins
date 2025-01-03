@@ -59,7 +59,7 @@ class AuthCubit extends Cubit<AuthState> {
     if (!canCheckBiometrics) {
       showSimpleNotification(
         Text(
-          'Biometrics are not available, please register and activate biometrics',
+          'Biometrics are not available for this device or setup pin code or face id on your device',
           style: TextStyle(
             color: Colors.white,
           ), //
