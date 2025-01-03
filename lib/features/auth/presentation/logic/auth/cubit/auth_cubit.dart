@@ -28,10 +28,6 @@ class AuthCubit extends Cubit<AuthState> {
         ));
 
   Future<void> init() async {
-    if (kDebugMode) {
-      appRouter.push(const HomeRoute());
-    }
-
     final isBiometricEnabled = await biometricAuth.isBiometricEnabled();
     emit(state.copyWith(isBiometricEnabled: isBiometricEnabled));
   }
@@ -52,9 +48,9 @@ class AuthCubit extends Cubit<AuthState> {
     showSimpleNotification(
       Text(
         'user data deleted',
-        style: TextStyle(color: Colors.white), // Текст белый
+        style: TextStyle(color: Colors.white), //
       ),
-      background: Colors.green, // Фон зеленый
+      background: Colors.green, //
     );
   }
 
@@ -66,9 +62,9 @@ class AuthCubit extends Cubit<AuthState> {
           'Biometrics are not available, please register and activate biometrics',
           style: TextStyle(
             color: Colors.white,
-          ), // Текст белый
+          ), //
         ),
-        background: Colors.red, // Фон зеленый
+        background: Colors.red, //
       );
 
       emit(AuthState.error('Biometrics are not available',
@@ -83,9 +79,9 @@ class AuthCubit extends Cubit<AuthState> {
         showSimpleNotification(
           Text(
             'success',
-            style: TextStyle(color: Colors.white), // Текст белый
+            style: TextStyle(color: Colors.white), //
           ),
-          background: Colors.green, // Фон зеленый
+          background: Colors.green, //
         );
         appRouter.push(const HomeRoute());
         emit(AuthState.loggedIn(isBiometricEnabled: state.isBiometricEnabled));
@@ -107,9 +103,9 @@ class AuthCubit extends Cubit<AuthState> {
       showSimpleNotification(
         Text(
           'success',
-          style: TextStyle(color: Colors.white), // Текст белый
+          style: TextStyle(color: Colors.white), //
         ),
-        background: Colors.green, // Фон зеленый
+        background: Colors.green, //
       );
 
       if (loginByBiometric) {
@@ -133,9 +129,9 @@ class AuthCubit extends Cubit<AuthState> {
         showSimpleNotification(
           Text(
             'success',
-            style: TextStyle(color: Colors.white), // Текст белый
+            style: TextStyle(color: Colors.white), //
           ),
-          background: Colors.green, // Фон зеленый
+          background: Colors.green, //
         );
         appRouter.push(const HomeRoute());
 
@@ -144,9 +140,9 @@ class AuthCubit extends Cubit<AuthState> {
         showSimpleNotification(
           Text(
             'Invalid credentials',
-            style: TextStyle(color: Colors.white), // Текст белый
+            style: TextStyle(color: Colors.white), //
           ),
-          background: Colors.red, // Фон красный
+          background: Colors.red, //
         );
         emit(AuthState.error('Invalid credentials',
             isBiometricEnabled: state.isBiometricEnabled));
@@ -155,9 +151,9 @@ class AuthCubit extends Cubit<AuthState> {
       showSimpleNotification(
         Text(
           e.toString(),
-          style: TextStyle(color: Colors.white), // Текст белый
+          style: TextStyle(color: Colors.white), //
         ),
-        background: Colors.red, // Фон красный
+        background: Colors.red, //
       );
       emit(AuthState.error(e.toString(),
           isBiometricEnabled: state.isBiometricEnabled));

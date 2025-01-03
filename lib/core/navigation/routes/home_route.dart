@@ -16,7 +16,6 @@ class HomePage extends StatelessWidget {
       try {
         String data = await file.readAsString();
         final ligands = data.split('\n');
-
         if (context.mounted) {
           context.router.push(
             CollectionRoute(

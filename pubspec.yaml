@@ -4,7 +4,7 @@ description: "Swifty Protein is a cross-platform mobile application built with
   (PDB). The app allows users to search for specific ligands, interact with
   their 3D models, and explore their atomic structures using modern
   visualization tools."
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: "none" #
 version: 1.0.0+1
 environment:
   sdk: ^3.6.0
@@ -48,11 +48,11 @@ flutter:
   uses-material-design: true
 
 flutter_native_splash:
-  color: "#89B0B2" # Цвет фона, если изображение не покроет экран полностью
-  image: assets/icon_app/Assets.xcassets/AppIcon.appiconset/1024.png # Самое большое изображение
+  color: "#89B0B2"
+  image: assets/icon_app/Assets.xcassets/AppIcon.appiconset/1024.png
   android: true
   ios: true
   web: false
-  android_gravity: fill # Растянуть изображение на весь экран
-  ios_content_mode: scaleAspectFill # Растянуть изображение на весь экран
+  android_gravity: fill
+  ios_content_mode: scaleAspectFill
   fullscreen: true

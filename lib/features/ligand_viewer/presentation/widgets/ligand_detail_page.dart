@@ -26,7 +26,7 @@ class _LigandDetailPageState extends State<LigandDetailPage> {
     Uint8List? image;
 
     await controller.captureImage((base64Image) {
-      print('Image captured with length: $base64Image');
+      debugPrint('Image captured with length: $base64Image');
       image = base64.decode(base64Image);
     });
 
